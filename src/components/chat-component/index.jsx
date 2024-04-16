@@ -42,6 +42,7 @@ export default function Chat() {
 
     function handleKeyDown(e) {
         if (e.key === 'Enter') {
+            if (inputValue === '') return
             handleDisplayMessage();
         }
     }
@@ -58,7 +59,6 @@ export default function Chat() {
         setMessages(t); 
     }
 
-    // console.log(inputValue);
     return (
         <div className="chatbot-wrapper">
             <div className="chat-display">
@@ -86,31 +86,10 @@ export default function Chat() {
                         onChange={(e) => setInputValue(e.target.value)}
                         onKeyDown={(e) => handleKeyDown(e)}
                     />
+                    <button onClick={handleDisplayMessage}>Send</button>
                 </div>
             </div>
-            {/* <div className="chatbot-app">
-                <h1 className="chatbot-title">Chat with the bot</h1>
-                <div className="chat-interface">
-                    <div className="display-container" ref={displayRef}>
-                        {
-                            loading ? <p style={{textAlign:'center'}}>Loading...</p> : null
-                        }
-                    </div>
-                    <div className="chat-input-container">
-                        <input
-                            type="text"
-                            name='input-text'
-                            value={inputValue}
-                            placeholder="Enter your inquiry..."
-                            onChange={(e) => setInputValue(e.target.value)}
-                            onKeyDown={(e)=> handleKeyDown(e)}
-                        />
-                        <button className="submit-btn">
-                            <img alt='send' src="https://cdn-icons-png.flaticon.com/128/2983/2983788.png" />
-                        </button>
-                    </div>
-                </div>
-            </div> */}
+            
         </div>
     )
 }
